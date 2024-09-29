@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import axios from 'axios';
+import './Login.css'; 
 
 const Login = () => {
     const [formData, setFormData] = useState({
@@ -14,24 +13,36 @@ const Login = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        try {
-            
-            const res = await axios.post('http://localhost:5001/api/auth/login', formData);
-            console.log('Logged in User:', res.data);  
-        } catch (err) {
-            console.error(err.response.data.message);  
-        }
+        console.log('Form submitted:', formData);
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h2>Login</h2>
-            <input type="email" name="email" value={email} onChange={handleChange} placeholder="Email" required />
-            <input type="password" name="password" value={password} onChange={handleChange} placeholder="Password" required />
-            <button type="submit">Login</button>
-        </form>
+        <div className="login-container">
+            <div className="login-box">
+                <h2>Login</h2>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        name="email"
+                        placeholder="Username"
+                        value={email}
+                        onChange={handleChange}
+                        required
+                    />
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={handleChange}
+                        required
+                    />
+                    <button type="submit">Login Now</button>
+                </form>
+            </div>
+        </div>
     );
 };
 

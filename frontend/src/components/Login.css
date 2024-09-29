@@ -1,0 +1,57 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+    height: 100vh;
+    width: 100vw; 
+    background-image: url('http://s3-us-west-1.amazonaws.com/sfc-wordpress2/wp-content/uploads/2018/08/28172140/AdobeStock_132077810.jpeg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+}
+.login-box {
+    padding: 40px;
+    width: 300px;
+    max-width: 100%;
+    color: white;
+    margin-left: 20px; 
+    background: transparent; 
+}
+
+.login-box h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8); 
+}
+
+.login-box input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background: rgba(255, 255, 255, 0.8); 
+    border: none;
+    border-radius: 5px;
+    color: #333;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #00c853;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-box button:hover {
+    background-color: #00a342;
+}

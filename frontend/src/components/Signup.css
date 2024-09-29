@@ -1,0 +1,79 @@
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('https://mediaim.expedia.com/localexpert/475966/791b342d-fa1d-4410-8c78-c3d073cb47d3.jpg'); 
+    background-size: cover;
+    background-position: center;
+}
+
+.signup-form {
+    background: rgba(255, 255, 255, 0.9); 
+    padding: 40px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 100%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.form-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.form-subtitle {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.select-role {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #f9f9f9;
+}
+
+.signup-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #00c853;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.signup-button:hover {
+    background-color: #00a342;
+}
+
+.signin-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.signin-link a {
+    color: #00c853;
+    text-decoration: none;
+}
+
+.signin-link a:hover {
+    text-decoration: underline;
+}

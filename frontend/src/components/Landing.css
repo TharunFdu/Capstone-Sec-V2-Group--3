@@ -1,0 +1,61 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif; 
+}
+
+.landing-container {
+    height: 100vh;
+    width: 100vw;
+    background-image: url('https://mediaim.expedia.com/localexpert/475966/791b342d-fa1d-4410-8c78-c3d073cb47d3.jpg'); 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ffffff;
+    padding: 20px;
+    position: relative;
+}
+
+.title {
+    font-size: 64px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.subtitle {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: 300;
+    max-width: 800px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.description {
+    font-size: 18px;
+    line-height: 1.8;
+    max-width: 700px;
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.cta-button {
+    padding: 15px 30px;
+    background-color: #00aaff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #007acc;
+}
