@@ -6,33 +6,36 @@
     background-image: url('https://mediaim.expedia.com/localexpert/475966/791b342d-fa1d-4410-8c78-c3d073cb47d3.jpg'); 
     background-size: cover;
     background-position: center;
+    background-color: rgba(0, 0, 40, 0.6);
 }
 
 .signup-form {
-    background: rgba(255, 255, 255, 0.9); 
+    background: rgba(255, 255, 255, 0.65); 
     padding: 40px;
-    border-radius: 8px;
+    border-radius: 10px;
     width: 400px;
     max-width: 100%;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 .form-title {
-    font-size: 24px;
+    font-size: 26px;
     margin-bottom: 10px;
     text-align: center;
+    color: #000428;
 }
 
 .form-subtitle {
     text-align: center;
     margin-bottom: 20px;
+    color: #004e92;
 }
 
 .input-field {
     width: 100%;
     padding: 12px;
     margin: 10px 0;
-    background: #f9f9f9;
+    background: rgba(255, 255, 255, 0.7);;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 16px;
@@ -44,23 +47,24 @@
     margin-bottom: 20px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    background: #f9f9f9;
+    background: rgba(255, 255, 255, 0.7);
 }
 
 .signup-button {
     width: 100%;
     padding: 12px;
-    background-color: #00c853;
+    background-color: #6a0dad;
     color: white;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, box-shadow 0.3s ease;
 }
 
 .signup-button:hover {
-    background-color: #00a342;
+    background-color: #9b30ff;
+    box-shadow: 0 0 15px rgba(155, 48, 255, 0.8), 0 0 25px rgba(155, 48, 255, 0.6);
 }
 
 .signin-link {
@@ -70,7 +74,7 @@
 }
 
 .signin-link a {
-    color: #00c853;
+    color: #6a0dad;
     text-decoration: none;
 }
 

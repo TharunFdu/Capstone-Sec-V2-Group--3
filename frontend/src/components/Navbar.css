@@ -1,0 +1,29 @@
+
+.space-navbar {
+    background: linear-gradient(90deg, #000428, #004e92);  
+    color: #ffffff;
+    padding: 15px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);  
+}
+
+.navbar-brand {
+    font-size: 1.8rem;
+    font-family: 'Roboto', sans-serif;  
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);  
+}
+
+.glowing-button {
+    color: #ffffff;
+    background-color: transparent;
+    border: 2px solid #00aaff;  
+    padding: 8px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.glowing-button:hover {
+    background-color: #00aaff;  
+    color: #000428; 
+    box-shadow: 0 0 10px #00aaff, 0 0 20px #00aaff, 0 0 30px #00aaff;  
+}

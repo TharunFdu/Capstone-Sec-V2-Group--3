@@ -10,6 +10,8 @@ const Signup = () => {
         role: 'user',
     });
 
+    const [successMessage, setSuccessMessage] = useState('');
+
     const { name, email, password, role } = formData;
 
     const handleChange = (e) => {
@@ -21,6 +23,7 @@ const Signup = () => {
         try {
             const res = await axios.post('http://localhost:5001/api/auth/register', formData);
             console.log('Registered User:', res.data);
+            setSuccessMessage('You have successfully registered! You can now login.');
         } catch (err) {
             console.error(err.response.data.message);
         }
@@ -72,6 +75,7 @@ const Signup = () => {
                 </select>
                 
                 <button type="submit" className="signup-button">Create Account</button>
+                {successMessage && <p>{successMessage}</p>}
                 <p className="signin-link">
                     Already have an account? <Link to="/login">Sign In</Link>
                 </p>

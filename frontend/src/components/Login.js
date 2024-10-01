@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './Login.css'; 
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Login = () => {
     const [formData, setFormData] = useState({
@@ -9,13 +11,24 @@ const Login = () => {
 
     const { email, password } = formData;
 
+    const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate();
+
+
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
+        try {
+            const res = await axios.post('http://localhost:5001/api/auth/login', formData);
+            localStorage.setItem('token', res.data.token);  
+            localStorage.setItem('user', JSON.stringify(res.data.user));  
+            navigate('/home');  
+        } catch (err) {
+            setErrorMessage('Invalid credentials, please try again.');
+        }
     };
 
     return (
@@ -40,6 +53,7 @@ const Login = () => {
                         required
                     />
                     <button type="submit">Login Now</button>
+                    {errorMessage && <p>{errorMessage}</p>}
                 </form>
             </div>
         </div>
