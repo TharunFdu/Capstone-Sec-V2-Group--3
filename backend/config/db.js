@@ -1,17 +1,15 @@
 
-const mongoose = require('mongoose');
+const { Sequelize } = require('sequelize');
 
-const connectDB = async () => {
-    try {
-        await mongoose.connect('mongodb://localhost:27017/astro-event-hub', {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
-        console.log('MongoDB connected');
-    } catch (err) {
-        console.error(err.message);
-        process.exit(1);  
-    }
-};
 
-module.exports = connectDB;
+const sequelize = new Sequelize('astro_event_hub', 'root', 'Tharun@2000', {
+  host: 'localhost',
+  port: 3306,   
+  dialect: 'mysql',  
+});
+
+sequelize.authenticate()
+  .then(() => console.log('MySQL connected'))
+  .catch(err => console.error('Error connecting to MySQL:', err));
+
+module.exports = sequelize;
