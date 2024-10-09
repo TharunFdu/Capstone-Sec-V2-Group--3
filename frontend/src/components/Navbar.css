@@ -1,29 +1,56 @@
-
 .space-navbar {
-    background: linear-gradient(90deg, #000428, #004e92);  
+    background: linear-gradient(90deg, #0f2027, #203a43, #2c5364); 
     color: #ffffff;
     padding: 15px 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);  
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);  
+    position: sticky; 
+    top: 0; 
+    z-index: 1000; 
 }
 
 .navbar-brand {
-    font-size: 1.8rem;
-    font-family: 'Roboto', sans-serif;  
+    font-size: 2rem;
+    font-family: 'Orbitron', sans-serif;  
     color: #ffffff;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);  
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.9), 0 0 20px rgba(255, 255, 255, 0.6);  
+    letter-spacing: 2px; 
+    text-transform: uppercase; 
+    transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: #00ffff; 
 }
 
 .glowing-button {
     color: #ffffff;
     background-color: transparent;
-    border: 2px solid #00aaff;  
-    padding: 8px 20px;
-    border-radius: 5px;
-    transition: all 0.3s ease;
+    border: 2px solid #00ccff;  
+    padding: 10px 25px;
+    border-radius: 8px;  
+    transition: all 0.4s ease;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem; 
+    box-shadow: 0 0 15px rgba(0, 204, 255, 0.5);
+    cursor: pointer; 
 }
 
 .glowing-button:hover {
-    background-color: #00aaff;  
-    color: #000428; 
-    box-shadow: 0 0 10px #00aaff, 0 0 20px #00aaff, 0 0 30px #00aaff;  
+    background-color: #00ccff;  
+    color: #001f3f;  
+    box-shadow: 0 0 20px #00ccff, 0 0 40px #00ccff, 0 0 60px #00ccff; 
+    transform: scale(1.05); 
+}
+
+.navbar-links a {
+    color: #ffffff;
+    margin-right: 20px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.navbar-links a:hover {
+    color: #00ccff; 
+    text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff;  
 }
