@@ -1,0 +1,51 @@
+.user-bookings-container {
+    padding: 20px;
+    background: linear-gradient(90deg, #bbbdd0, #3583c7);  /* Matching the navbar theme */
+    border-radius: 10px;
+    color: white;
+    margin: 40px auto;
+    max-width: 1200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+}
+
+.booking-list-container {
+    flex: 2;
+}
+
+.booking-list {
+    list-style: none;
+    padding: 0;
+}
+
+.booking-list li {
+    padding: 10px;
+    background-color: #255d8e;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.cancel-button {
+    padding: 5px 10px;
+    background-color: #cf3636;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.cancel-button:hover {
+    background-color: #e60000;
+    box-shadow: 0 0 10px #e60000, 0 0 20px #e60000, 0 0 30px #e60000;
+}
+
+h2 {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+    font-family: 'Roboto', sans-serif;
+}

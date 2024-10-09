@@ -1,4 +1,3 @@
-
 import axios from 'axios';
 
 const API_URL = 'http://localhost:5001/api';
@@ -86,12 +85,42 @@ export const updateVenue = async (id, venueData) => {
 };
 
 export const deleteVenue = async (id) => {
-  const token = getToken();
-  const response = await axios.delete(`${API_URL}/venues/${id}`, {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  });
-  return response.data;
-};
+    const token = getToken();
+    const response = await axios.delete(`${API_URL}/venues/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    return response.data;
+  };
+  
+  export const bookEvent = async (userId, eventId) => {
+    const token = getToken();
+    const response = await axios.post(`${API_URL}/bookings/book`, { userId, eventId }, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    return response.data;
+  };
+  
+  export const cancelBooking = async (userId, eventId) => {
+    const token = getToken();
+    const response = await axios.post(`${API_URL}/bookings/cancel`, { userId, eventId }, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    return response.data;
+  };
+  
+  export const getUserBookings = async (userId) => {
+    const token = getToken();
+    const response = await axios.get(`${API_URL}/bookings/user/${userId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    return response.data;
+  };
 

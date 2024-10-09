@@ -71,6 +71,17 @@ const Navbar = () => {
                                         </li>
                                     </>
                                 )}
+                                {user.role === 'user' && (
+                                    <>
+                                        <li className="nav-item">
+                                            <Link to="/book-event" className="btn glowing-button nav-link">Book Event</Link>
+                                        </li>
+                                        <li className="nav-item">
+                                            <Link to="/my-bookings" className="btn glowing-button nav-link">My Bookings</Link>
+                                        </li>
+                                    </>
+                                )}
+
                                 <li className="nav-item">
                                     <button className="btn glowing-button nav-link" onClick={handleSignOut}>Sign Out</button>
                                 </li>

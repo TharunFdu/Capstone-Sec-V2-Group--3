@@ -1,0 +1,32 @@
+.event-booking-container {
+    padding: 20px;
+    background-color: #c5d3eb;
+    border-radius: 18px;
+    max-width: 600px;
+    margin: 40px auto;
+    text-align: center;
+  }
+  
+  .event-dropdown {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+  }
+  
+  .submit-button {
+    background-color: #00aaff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .submit-button:hover {
+    background-color: #0088cc;
+  }
+  

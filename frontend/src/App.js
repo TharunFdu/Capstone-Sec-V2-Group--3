@@ -6,6 +6,8 @@ import Landing from './components/Landing';
 import Home from './components/Home';
 import EventManagement from './components/EventManagement';
 import VenueManagement from './components/VenueManagement';
+import EventBooking from './components/EventBooking';
+import UserBookings from './components/UserBookings';
 
 const App = () => {
   const user = JSON.parse(localStorage.getItem('user'));
@@ -24,6 +26,13 @@ const App = () => {
             <Route path="/venues" element={<VenueManagement isAdmin={true} />} />
         </>
         )}
+
+{user && user.role === 'user' && (
+        <>
+            <Route path="/book-event" element={<EventBooking userId={user.id} />} />
+            <Route path="/my-bookings" element={<UserBookings userId={user.id} />} />
+        </>
+)}
         </Routes>
     </Router>
   );
