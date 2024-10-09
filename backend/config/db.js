@@ -2,7 +2,7 @@
 const { Sequelize } = require('sequelize');
 
 
-const sequelize = new Sequelize('astro_event_hub', 'root', 'Tharun@2000', {
+const sequelize = new Sequelize('astro_event_hub', 'root', 'Samipya@123', {
   host: 'localhost',
   port: 3306,   
   dialect: 'mysql',  

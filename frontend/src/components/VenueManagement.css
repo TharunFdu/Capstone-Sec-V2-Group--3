@@ -1,0 +1,93 @@
+.venue-management-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    margin: 40px auto;
+    max-width: 1200px;
+}
+
+.venue-form {
+    flex: 1;
+    max-width: 400px;
+    background-color: #004e92;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+}
+
+.venue-list-container {
+    flex: 2;
+    margin-left: 20px;
+}
+
+.venue-list {
+    list-style: none;
+    padding: 0;
+}
+
+.venue-list li {
+    padding: 10px;
+    background-color: #000428;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-button, .delete-button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.edit-button {
+    background-color: #00aaff;
+    color: white;
+}
+
+.edit-button:hover {
+    background-color: #0088cc;
+}
+
+.delete-button {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.delete-button:hover {
+    background-color: #e60000;
+}
+
+.form-input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.submit-button {
+    background-color: #00aaff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #0088cc;
+}
