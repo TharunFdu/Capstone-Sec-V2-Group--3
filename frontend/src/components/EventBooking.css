@@ -2,31 +2,53 @@
     padding: 20px;
     background-color: #c5d3eb;
     border-radius: 18px;
-    max-width: 600px;
+    max-width: 900px;
     margin: 40px auto;
     text-align: center;
   }
   
-  .event-dropdown {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    font-size: 16px;
+  .event-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
   }
   
-  .submit-button {
-    background-color: #00aaff;
+  .event-card {
+    background-color: white;
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .event-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .event-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .book-button {
+    background-color: #f04e23;
     color: white;
+    padding: 10px 20px;
     border: none;
-    padding: 10px;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
     transition: background-color 0.3s;
   }
   
-  .submit-button:hover {
-    background-color: #0088cc;
+  .book-button:hover {
+    background-color: #d43b1a;
   }
   

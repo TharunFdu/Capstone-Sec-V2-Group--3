@@ -1,15 +1,31 @@
 const Event = require('../models/Event');
+const multer = require('multer');
+const path = require('path');
+
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/'); 
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname));
+  }
+});
+
+const upload = multer({ storage: storage });
+
+exports.upload = upload.single('image');
 
 exports.createEvent = async (req, res) => {
   try {
-    console.log('User creating event:', req.user);  
-
     const { title, venueId, date, time, capacity } = req.body;
-    const createdBy = req.user.userId || req.user.id;  
+    const createdBy = req.user.userId || req.user.id;
 
     if (!createdBy) {
       return res.status(400).json({ message: 'User not authenticated' });
     }
+
+    const imageUrl = req.file ? `/uploads/${req.file.filename}` : null;
 
     const event = await Event.create({
       title,
@@ -17,7 +33,8 @@ exports.createEvent = async (req, res) => {
       date,
       time,
       capacity,
-      createdBy,  
+      createdBy,
+      image: imageUrl, 
     });
 
     res.status(201).json(event);

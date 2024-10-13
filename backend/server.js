@@ -16,6 +16,8 @@ sequelize.sync()
   .then(() => console.log('MySQL Database connected and tables created'))
   .catch(err => console.error('Error connecting to MySQL:', err));
 
+app.use('/uploads', express.static('uploads'));
+
 app.use('/api/auth', authRoutes);
 
 app.use('/api/events', eventRoutes);
