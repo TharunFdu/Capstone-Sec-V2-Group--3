@@ -13,7 +13,11 @@ const User = sequelize.define('User', {
   },
   password: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
+  },
+    googleId: {
+      type: DataTypes.STRING, 
+      allowNull: true,
   },
   role: {
     type: DataTypes.ENUM('admin', 'user'),
