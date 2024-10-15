@@ -1,6 +1,7 @@
 const Event = require('../models/Event');
 const multer = require('multer');
 const path = require('path');
+const { Op } = require('sequelize');
 
 
 const storage = multer.diskStorage({
@@ -46,14 +47,15 @@ exports.createEvent = async (req, res) => {
 
 exports.getEvents = async (req, res) => {
   try {
-    let events;
-
-    if (req.user && req.user.role === 'admin') {
-      const adminId = req.user.userId;
-      events = await Event.findAll({ where: { createdBy: adminId } });
-    } else {
-      events = await Event.findAll();  
+    const { search, startDate, endDate } = req.query; 
+    let whereClause = {};
+    if(search) {
+      whereClause.title = { [Op.like]: `%${search}%` };
     }
+    if (startDate && endDate) {
+      whereClause.date = { [Op.between]: [new Date(startDate), new Date(endDate)] };
+    }
+      const events = await Event.findAll({ where: whereClause, });
     
     res.status(200).json(events);
   } catch (error) {
