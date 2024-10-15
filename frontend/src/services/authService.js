@@ -8,15 +8,15 @@ export const register = async (name, email, password, role) => {
   return res.data;
 };
 
-
 export const login = async (email, password) => {
   const res = await axios.post(`${API_URL}/auth/login`, { email, password });
   return res.data;
 };
 
-export const getEvents = async () => {
+export const getEvents = async (filters = {}) => {
   const token = getToken();
-  const response = await axios.get(`${API_URL}/events`, {
+  const queryParams = new URLSearchParams(filters).toString();
+  const response = await axios.get(`${API_URL}/events?${queryParams}`, {
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -123,4 +123,3 @@ export const deleteVenue = async (id) => {
     });
     return response.data;
   };
-

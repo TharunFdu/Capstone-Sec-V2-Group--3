@@ -6,6 +6,9 @@ import Navbar from './Navbar';
 const EventBooking = ({ userId }) => {
   const [events, setEvents] = useState([]);
   const [venues, setVenues] = useState([]);
+  const [searchTerm, setSearchTerm] = useState(''); 
+  const [startDate, setStartDate] = useState('');  
+  const [endDate, setEndDate] = useState('');     
 
   useEffect(() => {
     loadEvents();
@@ -22,9 +25,9 @@ const EventBooking = ({ userId }) => {
     }
   };
 
-  const loadEvents = async () => {
+  const loadEvents = async (filters = {}) => {
     try {
-      const data = await getEvents();
+      const data = await getEvents(filters);
       setEvents(data);
     } catch (error) {
       console.error('Error fetching events:', error);
@@ -47,12 +50,55 @@ const EventBooking = ({ userId }) => {
     return venue ? venue.location : 'Location not available';  
   };
 
+  const handleSearchFilter = () => {
+    const filters = {};
+
+    if (searchTerm) {
+      filters.search = searchTerm;
+    }
+
+    if (startDate && endDate) {
+      filters.startDate = startDate;
+      filters.endDate = endDate;
+    }
+
+    loadEvents(filters);  
+  };
+
   return (
     <div>
       <Navbar />
       <div className="event-booking-container">
         <h2>Book an Event</h2>
 
+        <div className="booking-layout">
+          <div className="filter-container">
+            <h5 style={{ color: 'black' }}>Search & Filter</h5>
+            <input
+              type="text"
+              placeholder="Search event name"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="search-input"
+            />
+            <input
+              type="date"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+              className="date-input"
+            />
+            <input
+              type="date"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+              className="date-input"
+            />
+            <button className="filter-button" onClick={handleSearchFilter}>
+              Search & Filter
+            </button>
+          </div>
+
+        <div className="event-list-container">
         <div className="event-list">
           {events.length > 0 ? (
             events.map(event => (
@@ -69,10 +115,12 @@ const EventBooking = ({ userId }) => {
               </div>
             ))
           ) : (
-            <p>No events available.</p>
+            <h1 style={{ color: 'red' }}>No events available.</h1>
           )}
         </div>
       </div>
+    </div>
+    </div>
     </div>
   );
 };
