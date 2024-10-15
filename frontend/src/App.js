@@ -8,11 +8,13 @@ import EventManagement from './components/EventManagement';
 import VenueManagement from './components/VenueManagement';
 import EventBooking from './components/EventBooking';
 import UserBookings from './components/UserBookings';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const App = () => {
   const user = JSON.parse(localStorage.getItem('user'));
 
     return (
+        <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
         <Router>
         <Routes>
         <Route path="/signup" element={<Signup />} />
@@ -35,6 +37,7 @@ const App = () => {
 )}
         </Routes>
     </Router>
+     </GoogleOAuthProvider>
   );
 };
 
