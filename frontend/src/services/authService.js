@@ -123,3 +123,39 @@ export const deleteVenue = async (id) => {
     });
     return response.data;
   };
+
+
+  export const getUserChatGroups = async (userId) => {
+    const token = getToken();
+    const response = await axios.get(`${API_URL}/chat/user-groups/${userId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    return response.data;
+  };
+  
+  export const getChatMessages = async (groupId) => {
+    const token = getToken();
+    const response = await axios.get(`${API_URL}/chat/messages/${groupId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    return response.data;
+  };
+  
+  export const sendMessage = async (groupId, userId, message) => {
+    const token = getToken();
+    const response = await axios.post(`${API_URL}/chat/send`, {
+      groupId,  // Change this from chatGroupId to groupId
+      userId,
+      message
+    }, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    return response.data;
+  };
+  
