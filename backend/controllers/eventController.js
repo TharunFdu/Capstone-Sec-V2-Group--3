@@ -1,4 +1,6 @@
 const Event = require('../models/Event');
+const ChatGroup = require('../models/ChatGroup');
+const ChatGroupMember = require('../models/ChatGroupMember');
 const multer = require('multer');
 const path = require('path');
 const { Op } = require('sequelize');
@@ -38,7 +40,18 @@ exports.createEvent = async (req, res) => {
       image: imageUrl, 
     });
 
-    res.status(201).json(event);
+    const chatGroup = await ChatGroup.create({
+      eventId: event.id,
+      adminId: createdBy,
+      groupName: `${title} Chat Group`,
+    });
+
+    await ChatGroupMember.create({
+      groupId: chatGroup.id,
+      userId: createdBy,
+    });
+
+    res.status(201).json({ message: 'Event and chat group created successfully, admin added to the group.', event, chatGroup });
   } catch (error) {
     console.error('Error creating event:', error);
     res.status(500).json({ error: 'Failed to create event.' });
