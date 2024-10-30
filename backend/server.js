@@ -14,6 +14,7 @@ const venueRoutes = require('./routes/venueRoutes');
 const bookingRoutes = require('./routes/bookingRoutes');
 const chatRoutes = require('./routes/chatRoutes');
 const chatSocket = require('./sockets/chatSocket');  
+const profileRoutes = require('./routes/profile');
 
 const ChatGroup = require('./models/ChatGroup');
 const ChatMessage = require('./models/ChatMessage');
@@ -40,6 +41,8 @@ sequelize.sync({ alter: true })
 
 app.use('/uploads', express.static('uploads'));
 
+
+app.use('/api/profile', profileRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/events', eventRoutes);
 app.use('/api/venues', venueRoutes);
