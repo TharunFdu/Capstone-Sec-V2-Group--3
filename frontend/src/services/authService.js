@@ -124,7 +124,6 @@ export const deleteVenue = async (id) => {
     return response.data;
   };
 
-
   export const getUserChatGroups = async (userId) => {
     const token = getToken();
     const response = await axios.get(`${API_URL}/chat/user-groups/${userId}`, {
@@ -159,3 +158,23 @@ export const deleteVenue = async (id) => {
     return response.data;
   };
   
+
+  export const getUserProfile = async (userId) => {
+    const token = getToken(); 
+    const response = await axios.get(`${API_URL}/profile/${userId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  };
+  
+  export const updateUserProfile = async (userId, profileData) => {
+    const token = localStorage.getItem('token');
+    const response = await axios.put(`${API_URL}/profile/${userId}`, profileData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response.data;
+  };

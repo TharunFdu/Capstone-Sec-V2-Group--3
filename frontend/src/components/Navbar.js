@@ -85,6 +85,10 @@ const Navbar = () => {
                                     </>
                                 )}
 
+<li className="nav-item">
+                                    <Link to="/profile" className="btn glowing-button nav-link">Profile</Link>
+                                </li>
+
                                 <li className="nav-item">
                                     <button className="btn glowing-button nav-link" onClick={handleSignOut}>Sign Out</button>
                                 </li>

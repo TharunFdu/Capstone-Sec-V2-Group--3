@@ -1,0 +1,72 @@
+.profile-management-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .profile-form-container {
+    width: 30%;
+    padding: 15px;
+    background: rgba(0, 119, 182, 0.5);
+    border-radius: 12px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+    color: white;
+  }
+  
+  .profile-form-container h3 {
+    color: #ffffff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    font-size: 20px;
+  }
+  
+  .profile-info {
+    margin-bottom: 15px;
+  }
+  
+  .profile-info p {
+    margin: 0;
+  }
+  
+  .profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .form-input {
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    font-size: 14px;
+    background-color: rgba(14, 14, 14, 0.8);
+  }
+  
+  .form-input:focus {
+    outline: none;
+    border: 2px solid #00aaff;
+  }
+  
+  .submit-button {
+    background-color: #00aaff;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 14px;
+  }
+  
+  .submit-button:hover {
+    background-color: #0088cc;
+  }
+  
+  .error-message {
+    color: #ff4d4d;
+    margin-bottom: 10px;
+  }
+  
+  .success-message {
+    color: #4CAF50;
+    margin-bottom: 10px;
+  }

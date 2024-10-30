@@ -10,6 +10,7 @@ import EventBooking from './components/EventBooking';
 import UserBookings from './components/UserBookings';
 import ChatRoom from './components/ChatRoom';
 import ChatGroupsList from './components/ChatGroupsList';
+import Profile from './components/Profile'; 
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
         <>
             <Route path="/events" element={<EventManagement isAdmin={true} />} />
             <Route path="/venues" element={<VenueManagement isAdmin={true} />} />
+            <Route path="/profile" element={<Profile />} />  
         </>
         )}
 
@@ -37,6 +39,8 @@ const App = () => {
             <Route path="/my-bookings" element={<UserBookings userId={user.id} />} />
             <Route path="/chat-groups" element={<ChatGroupsList userId={user.id} />} />
           <Route path="/chat/:groupId" element={<ChatRoom userId={user.id} />} />
+          <Route path="/profile" element={<Profile />} />  
+          
         </>
 )}
         </Routes>
