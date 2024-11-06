@@ -7,8 +7,10 @@ const Profile = () => {
     name: '',
     email: '',
     role: '',
+    location: '',
   });
   const [newName, setNewName] = useState('');
+  const [newLocation, setNewLocation] = useState(''); 
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [error, setError] = useState('');
@@ -28,6 +30,7 @@ const Profile = () => {
       const data = await getUserProfile(userId);
       setProfile(data);
       setNewName(data.name);
+      setNewLocation(data.location); 
     } catch (err) {
       setError('Failed to fetch profile');
       console.error(err);
@@ -52,6 +55,7 @@ const Profile = () => {
     try {
       const updatedProfile = await updateUserProfile(user.id, {
         name: newName,
+        location: newLocation, 
         oldPassword,
         newPassword,
       });
@@ -94,6 +98,18 @@ const Profile = () => {
               placeholder="Enter new name"
               className="form-input"
               required
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="location">Location:</label>
+            <input
+              type="text"
+              id="location"
+              value={newLocation}
+              onChange={(e) => setNewLocation(e.target.value)}
+              placeholder="Enter location"
+              className="form-input"
             />
           </div>
 

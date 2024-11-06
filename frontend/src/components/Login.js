@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Login.css'; 
+import './Login.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { GoogleLogin } from '@react-oauth/google';
@@ -9,7 +9,6 @@ const Login = () => {
         email: '',
         password: '',
     });
-
     const { email, password } = formData;
 
     const [errorMessage, setErrorMessage] = useState('');
@@ -17,6 +16,7 @@ const Login = () => {
     const [isRoleSelection, setIsRoleSelection] = useState(false);
     const [loginData, setLoginData] = useState(null);
     const [role, setRole] = useState(''); 
+    const [location, setLocation] = useState(''); 
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -26,13 +26,13 @@ const Login = () => {
         e.preventDefault();
         try {
             const res = await axios.post('http://localhost:5001/api/auth/login', formData);
-            if (!res.data.user.role) {
+            if (!res.data.user.role || !res.data.user.location) {
                 setLoginData(res.data);
                 setIsRoleSelection(true);
             } else {
-            localStorage.setItem('token', res.data.token);  
-            localStorage.setItem('user', JSON.stringify(res.data.user));  
-            navigate('/home');  
+                localStorage.setItem('token', res.data.token);  
+                localStorage.setItem('user', JSON.stringify(res.data.user));  
+                navigate('/home');  
             }
         } catch (err) {
             setErrorMessage('Invalid credentials, please try again.');
@@ -43,7 +43,7 @@ const Login = () => {
         const token = response.credential;
         try {
             const res = await axios.post('http://localhost:5001/api/auth/google', { token });
-            if (!res.data.user.role) {
+            if (!res.data.user.role || !res.data.user.location) {
                 setLoginData(res.data); 
                 setIsRoleSelection(true); 
             } else {
@@ -61,21 +61,22 @@ const Login = () => {
     };
 
     const handleRoleSubmit = async () => {
-        if (!role) {
-            setErrorMessage('Please select a role.');
+        if (!role || !location) {
+            setErrorMessage('Please select a role and enter your location.');
             return;
         }
 
         try {
             const res = await axios.post('http://localhost:5001/api/auth/set-role', {
                 role,
+                location,
                 userId: loginData.user.id, 
             });
             localStorage.setItem('token', loginData.token);
-            localStorage.setItem('user', JSON.stringify({ ...loginData.user, role: res.data.role }));
+            localStorage.setItem('user', JSON.stringify({ ...loginData.user, role: res.data.role, location }));
             navigate('/home');
         } catch (err) {
-            setErrorMessage('Role assignment failed, please try again.');
+            setErrorMessage('Role and location assignment failed, please try again.');
         }
     };
 
@@ -113,11 +114,19 @@ const Login = () => {
                     </>
                 ) : (
                     <div className="role-selection">
-                        <h3>Select Your Role</h3>
+                        <h3>Select Your Role and Location</h3>
                         <div className="role-options">
                             <button onClick={() => setRole('user')}>User</button>
                             <button onClick={() => setRole('admin')}>Admin</button>
                         </div>
+                        <input
+                            type="text"
+                            placeholder="Enter your location"
+                            value={location}
+                            onChange={(e) => setLocation(e.target.value)}
+                            className="location-input"
+                            required
+                        />
                         <button onClick={handleRoleSubmit}>Submit</button>
                         {errorMessage && <p>{errorMessage}</p>}
                     </div>

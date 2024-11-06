@@ -8,11 +8,12 @@ const Signup = () => {
         email: '',
         password: '',
         role: 'user',
+        location:'',
     });
 
     const [successMessage, setSuccessMessage] = useState('');
 
-    const { name, email, password, role } = formData;
+    const { name, email, password, role, location } = formData;
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -59,6 +60,15 @@ const Signup = () => {
                     value={password} 
                     onChange={handleChange} 
                     placeholder="Password" 
+                    required 
+                    className="input-field" 
+                />
+                <input 
+                    type="text" 
+                    name="location" 
+                    value={location} 
+                    onChange={handleChange} 
+                    placeholder="Location" 
                     required 
                     className="input-field" 
                 />
