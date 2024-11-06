@@ -15,12 +15,14 @@ const bookingRoutes = require('./routes/bookingRoutes');
 const chatRoutes = require('./routes/chatRoutes');
 const chatSocket = require('./sockets/chatSocket');  
 const profileRoutes = require('./routes/profile');
+const recommendationRoutes = require('./routes/recommendationRoutes');
 
 const ChatGroup = require('./models/ChatGroup');
 const ChatMessage = require('./models/ChatMessage');
 const ChatGroupMember = require('./models/ChatGroupMember');
 const User = require('./models/User');
 const Event = require('./models/Event');
+
 
 const server = http.createServer(app);
 
@@ -41,13 +43,14 @@ sequelize.sync({ alter: true })
 
 app.use('/uploads', express.static('uploads'));
 
-
+app.use('/api/recommendations', recommendationRoutes);
 app.use('/api/profile', profileRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/events', eventRoutes);
 app.use('/api/venues', venueRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/chat', chatRoutes);
+
 
 io.on('connection', (socket) => {
   console.log('A user connected', socket.id);

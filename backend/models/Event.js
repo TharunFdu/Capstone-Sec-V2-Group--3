@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
+const Venue = require('./Venue');
 
 const Event = sequelize.define('Event', {
   title: {
@@ -35,5 +36,7 @@ const Event = sequelize.define('Event', {
     allowNull: true,
   }
 });
+
+Event.belongsTo(Venue, { foreignKey: 'venueId', as: 'venue' });
 
 module.exports = Event;

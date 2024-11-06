@@ -8,7 +8,7 @@ exports.getUserProfile = async (req, res) => {
     console.log("User ID (Backend):", userId);
 
     const user = await User.findByPk(userId, {
-      attributes: ['id', 'name', 'email', 'role'],
+      attributes: ['id', 'name', 'email', 'role', 'location'],  
     });
 
     if (!user) {
@@ -24,7 +24,7 @@ exports.getUserProfile = async (req, res) => {
 
 exports.updateUserProfile = async (req, res) => {
   const { userId } = req.params;
-  const { name, oldPassword, newPassword } = req.body;
+  const { name, oldPassword, newPassword, location } = req.body; 
 
   try {
     console.log("Updating User ID (Backend):", userId);
@@ -37,6 +37,9 @@ exports.updateUserProfile = async (req, res) => {
 
     if (name) {
       user.name = name;
+    }
+    if (location) {
+      user.location = location;
     }
 
     if (newPassword) {

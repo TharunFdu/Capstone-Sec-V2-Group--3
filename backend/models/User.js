@@ -23,6 +23,10 @@ const User = sequelize.define('User', {
     type: DataTypes.ENUM('admin', 'user'),
     defaultValue: 'user',
   },
+  location: {
+    type: DataTypes.STRING,  
+    allowNull: true,
+  },
 }, {
   timestamps: true,  
 });

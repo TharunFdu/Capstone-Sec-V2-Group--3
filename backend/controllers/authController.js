@@ -5,7 +5,7 @@ const keys = require('../config/keys');
 const { OAuth2Client } = require('google-auth-library');
 
 exports.register = async (req, res) => {
-    const { name, email, password, role } = req.body;
+    const { name, email, password, role, location } = req.body;
 
     try {
         const existingUser = await User.findOne({ where: { email } });
@@ -20,6 +20,7 @@ exports.register = async (req, res) => {
             email,
             password: hashedPassword,
             role,
+            location,  
         });
 
         const token = jwt.sign({ userId: newUser.id, role: newUser.role }, keys.jwtSecret, { expiresIn: '1h' });
@@ -72,7 +73,8 @@ exports.googleLogin = async (req, res) => {
                 name,
                 email,
                 googleId,
-                role: null, 
+                role: null,
+                location: ''  
             });
         }
 
