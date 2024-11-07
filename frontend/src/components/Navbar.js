@@ -79,13 +79,15 @@ const Navbar = () => {
                                         <li className="nav-item">
                                             <Link to="/my-bookings" className="btn glowing-button nav-link">My Bookings</Link>
                                         </li>
-                                        <li className="nav-item">
-  <Link to="/chat-groups" className="btn glowing-button nav-link">Chat Groups</Link>
-</li>
                                     </>
                                 )}
 
-<li className="nav-item">
+                                {}
+                                <li className="nav-item">
+                                    <Link to="/chat-groups" className="btn glowing-button nav-link">Chat Groups</Link>
+                                </li>
+
+                                <li className="nav-item">
                                     <Link to="/profile" className="btn glowing-button nav-link">Profile</Link>
                                 </li>
 

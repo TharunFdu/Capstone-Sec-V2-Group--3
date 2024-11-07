@@ -178,3 +178,8 @@ export const deleteVenue = async (id) => {
     });
     return response.data;
   };
+
+export const getRecommendations = async (userId) => {
+  const response = await axios.get(`${API_URL}/recommendations?userId=${userId}`);
+  return response.data;
+};
