@@ -16,12 +16,14 @@ const chatRoutes = require('./routes/chatRoutes');
 const chatSocket = require('./sockets/chatSocket');  
 const profileRoutes = require('./routes/profile');
 const recommendationRoutes = require('./routes/recommendationRoutes');
+const reviewRoutes = require('./routes/reviewRoutes');
 
 const ChatGroup = require('./models/ChatGroup');
 const ChatMessage = require('./models/ChatMessage');
 const ChatGroupMember = require('./models/ChatGroupMember');
 const User = require('./models/User');
 const Event = require('./models/Event');
+const Review = require('./models/Review');
 
 
 const server = http.createServer(app);
@@ -44,6 +46,7 @@ sequelize.sync({ alter: true })
 app.use('/uploads', express.static('uploads'));
 
 app.use('/api/recommendations', recommendationRoutes);
+app.use('/api', reviewRoutes);
 app.use('/api/profile', profileRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/events', eventRoutes);
