@@ -21,6 +21,11 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+  transition: transform 0.2s;
+}
+
+.event-card:hover {
+  transform: scale(1.05);
 }
 
 .event-card-content {
@@ -46,10 +51,27 @@
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s;
+  margin-top: 10px;
 }
 
 .book-button:hover {
   background-color: #d43b1a;
+}
+
+.view-details-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.view-details-button:hover {
+  background-color: #0056b3;
 }
 
 .booking-layout {
@@ -66,9 +88,9 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   position: sticky;
-  top: 100px; 
-  max-height: calc(100vh - 100px); 
-  overflow-y: auto; 
+  top: 100px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
 }
 
 .search-input, .date-input {
@@ -95,4 +117,77 @@
 
 .event-list-container {
   flex: 3;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow-y: auto; 
+}
+
+.modal-content {
+  background: white;
+  color: black;
+  padding: 20px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh; 
+  overflow-y: auto; 
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  text-align: left;
+}
+
+.close-button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  background: #0056b3;
+}
+
+.event-details-modal h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.event-details-modal p {
+  color: #555;
+  margin: 5px 0;
+}
+
+.event-reviews {
+  margin-top: 20px;
+}
+
+.review-item {
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.review-item p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.no-reviews {
+  color: #999;
+  font-style: italic;
 }

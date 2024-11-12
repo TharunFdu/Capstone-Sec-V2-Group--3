@@ -24,6 +24,22 @@ export const getEvents = async (filters = {}) => {
   return response.data;
 };
 
+export const getEventById = async (eventId) => {
+  const token = getToken(); 
+  try {
+    const response = await axios.get(`${API_URL}/events/${eventId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching event details:', error);
+    throw error;
+  }
+};
+
+
 export const getVenues = async () => {
   const token = getToken();
   const response = await axios.get(`${API_URL}/venues`, {
@@ -183,3 +199,27 @@ export const getRecommendations = async (userId) => {
   const response = await axios.get(`${API_URL}/recommendations?userId=${userId}`);
   return response.data;
 };
+
+export const getEventReviews = async (eventId) => {
+  const response = await axios.get(`${API_URL}/events/${eventId}/reviews`);
+  return response.data;
+};
+
+export const addReview = async ({ eventId, userId, rating, review }) => {
+  const token = localStorage.getItem('token');
+  return await axios.post(`${API_URL}/events/${eventId}/reviews`, {
+    userId,
+    rating,
+    review,
+  }, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+};
+
+export const getAverageRating = async (eventId) => {
+  const response = await axios.get(`${API_URL}/events/${eventId}/average-rating`);
+  return response.data;
+};
+

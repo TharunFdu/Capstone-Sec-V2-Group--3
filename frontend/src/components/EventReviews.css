@@ -1,0 +1,50 @@
+.event-reviews {
+    padding: 20px;
+    background-color: #fff;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 20px;
+  }
+  
+  .event-reviews h3 {
+    color: #444;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+  }
+  
+  .review-item {
+    background-color: #f1f1f1;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+  }
+  
+  .review-item p {
+    margin: 5px 0;
+  }
+  
+  .rating {
+    font-weight: bold;
+    color: #ff9800;
+  }
+  
+  .comment {
+    font-style: italic;
+    color: #333;
+  }
+  
+  .review-date {
+    font-size: 0.9em;
+    color: #888;
+  }
+  
+  .error-message {
+    color: red;
+    font-size: 1em;
+    margin: 10px 0;
+  }
+  
+  .no-reviews {
+    font-size: 1.1em;
+    color: #888;
+  }
+  
