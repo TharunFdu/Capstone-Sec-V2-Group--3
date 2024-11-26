@@ -148,7 +148,7 @@ const EventBooking = ({ userId }) => {
                       <h3 style={{ color: 'black' }}>{event.title}</h3>
                       <p style={{ color: 'black' }}>{getVenueLocation(event.venueId)}</p>
                       <p style={{ color: 'black' }}>{new Date(event.date).toLocaleDateString()}</p>
-                      <p style={{ color: 'black' }}>Average Rating: {ratings[event.id] || 'No rating yet'}</p>
+                      <p style={{ color: 'black' }}>Average Rating: {ratings[event.id] || 'No rating yet'}/5</p>
                       <button onClick={() => openEventDetails(event)} className="view-details-button">
                         View Details & Reviews
                       </button>
