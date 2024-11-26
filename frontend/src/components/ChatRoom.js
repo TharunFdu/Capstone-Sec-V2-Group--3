@@ -8,8 +8,8 @@ const ChatRoom = ({ userId }) => {
   const { groupId } = useParams();
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
-  
-  const socket = io('http://localhost:5001');
+
+  const socket = io('http://localhost:5001', { transports: ['websocket'] });
 
   useEffect(() => {
     const fetchMessages = async () => {
@@ -25,6 +25,7 @@ const ChatRoom = ({ userId }) => {
 
     socket.emit('joinGroup', { groupId });
 
+
     socket.on('newMessage', (message) => {
       setMessages((prevMessages) => [...prevMessages, message]);
     });
@@ -35,14 +36,19 @@ const ChatRoom = ({ userId }) => {
   }, [groupId]);
 
   const handleSendMessage = async () => {
-    try {
-      await sendMessage(groupId, userId, newMessage);
+    if (!newMessage.trim()) return; 
 
-      socket.emit('sendMessage', {
-        groupId,
-        userId,
-        message: newMessage,
-      });
+    try {
+      const sentMessage = await sendMessage(groupId, userId, newMessage);
+
+   
+      socket.emit('sendMessage', sentMessage.newMessage);
+
+     
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { ...sentMessage.newMessage, User: { name: 'You' } },
+      ]);
 
       setNewMessage('');
     } catch (error) {
