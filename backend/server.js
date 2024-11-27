@@ -25,6 +25,7 @@ const User = require('./models/User');
 const Event = require('./models/Event');
 const Review = require('./models/Review');
 
+const { ensureMainAdmin } = require('./controllers/authController');
 
 const server = http.createServer(app);
 
@@ -39,9 +40,8 @@ app.use(express.json());
 app.use(cors());
 app.use(passport.initialize());
 
-sequelize.sync({ alter: true })
-  .then(() => console.log('MySQL Database connected and tables created'))
-  .catch(err => console.error('Error connecting to MySQL:', err));
+
+sequelize.sync({ alter: true }).then(ensureMainAdmin);
 
 app.use('/uploads', express.static('uploads'));
 
@@ -53,7 +53,6 @@ app.use('/api/events', eventRoutes);
 app.use('/api/venues', venueRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/chat', chatRoutes);
-
 
 io.on('connection', (socket) => {
   console.log('A user connected', socket.id);

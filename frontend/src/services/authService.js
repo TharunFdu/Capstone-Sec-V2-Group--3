@@ -223,3 +223,32 @@ export const getAverageRating = async (eventId) => {
   return response.data;
 };
 
+export const getAllUsers = async () => {
+  const token = localStorage.getItem('token');
+  const response = await axios.get(`${API_URL}/auth/users`, {
+      headers: {
+          Authorization: `Bearer ${token}`,
+      },
+  });
+  return response.data;
+};
+
+
+export const updateRole = async (userId, newRole) => {
+  const token = localStorage.getItem('token');
+  console.log('Token being sent:', token); 
+
+  const response = await axios.post(
+      `${API_URL}/auth/set-role`,
+      { userId, role: newRole },
+      {
+          headers: {
+              Authorization: `Bearer ${token}`,
+          },
+      }
+  );
+  return response.data;
+};
+
+
+

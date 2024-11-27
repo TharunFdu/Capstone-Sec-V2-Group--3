@@ -69,6 +69,9 @@ const Navbar = () => {
                                         <li className="nav-item">
                                             <Link to="/venues" className="btn glowing-button nav-link">Manage Venues</Link>
                                         </li>
+                                        <li className="nav-item">
+                                            <Link to="/admin/users" className="btn glowing-button nav-link">Manage Users</Link>
+                                        </li>
                                     </>
                                 )}
                                 {user.role === 'user' && (
@@ -81,16 +84,12 @@ const Navbar = () => {
                                         </li>
                                     </>
                                 )}
-
-                                {}
                                 <li className="nav-item">
                                     <Link to="/chat-groups" className="btn glowing-button nav-link">Chat Groups</Link>
                                 </li>
-
                                 <li className="nav-item">
                                     <Link to="/profile" className="btn glowing-button nav-link">Profile</Link>
                                 </li>
-
                                 <li className="nav-item">
                                     <button className="btn glowing-button nav-link" onClick={handleSignOut}>Sign Out</button>
                                 </li>

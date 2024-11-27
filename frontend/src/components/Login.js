@@ -13,10 +13,6 @@ const Login = () => {
 
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
-    const [isRoleSelection, setIsRoleSelection] = useState(false);
-    const [loginData, setLoginData] = useState(null);
-    const [role, setRole] = useState(''); 
-    const [location, setLocation] = useState(''); 
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -26,14 +22,9 @@ const Login = () => {
         e.preventDefault();
         try {
             const res = await axios.post('http://localhost:5001/api/auth/login', formData);
-            if (!res.data.user.role || !res.data.user.location) {
-                setLoginData(res.data);
-                setIsRoleSelection(true);
-            } else {
-                localStorage.setItem('token', res.data.token);  
-                localStorage.setItem('user', JSON.stringify(res.data.user));  
-                navigate('/home');  
-            }
+            localStorage.setItem('token', res.data.token);  
+            localStorage.setItem('user', JSON.stringify(res.data.user));  
+            navigate('/home');  
         } catch (err) {
             setErrorMessage('Invalid credentials, please try again.');
         }
@@ -43,94 +34,48 @@ const Login = () => {
         const token = response.credential;
         try {
             const res = await axios.post('http://localhost:5001/api/auth/google', { token });
-            if (!res.data.user.role || !res.data.user.location) {
-                setLoginData(res.data); 
-                setIsRoleSelection(true); 
-            } else {
-                localStorage.setItem('token', res.data.token);
-                localStorage.setItem('user', JSON.stringify(res.data.user));
-                navigate('/home');
-            }
+
+            localStorage.setItem('token', res.data.token);
+            localStorage.setItem('user', JSON.stringify(res.data.user));
+            navigate('/home');
         } catch (err) {
             setErrorMessage('Google login failed, please try again.');
         }
     };
 
-    const handleGoogleFailure = (error) => {
+    const handleGoogleFailure = () => {
         setErrorMessage('Google sign-in failed, please try again.');
-    };
-
-    const handleRoleSubmit = async () => {
-        if (!role || !location) {
-            setErrorMessage('Please select a role and enter your location.');
-            return;
-        }
-
-        try {
-            const res = await axios.post('http://localhost:5001/api/auth/set-role', {
-                role,
-                location,
-                userId: loginData.user.id, 
-            });
-            localStorage.setItem('token', loginData.token);
-            localStorage.setItem('user', JSON.stringify({ ...loginData.user, role: res.data.role, location }));
-            navigate('/home');
-        } catch (err) {
-            setErrorMessage('Role and location assignment failed, please try again.');
-        }
     };
 
     return (
         <div className="login-container">
             <div className="login-box">
                 <h2>Login</h2>
-                {!isRoleSelection ? (
-                    <>
-                        <form onSubmit={handleSubmit}>
-                            <input
-                                type="text"
-                                name="email"
-                                placeholder="Username"
-                                value={email}
-                                onChange={handleChange}
-                                required
-                            />
-                            <input
-                                type="password"
-                                name="password"
-                                placeholder="Password"
-                                value={password}
-                                onChange={handleChange}
-                                required
-                            />
-                            <button type="submit">Login Now</button>
-                            {errorMessage && <p>{errorMessage}</p>}
-                        </form>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        name="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={handleChange}
+                        required
+                    />
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={handleChange}
+                        required
+                    />
+                    <button type="submit">Login Now</button>
+                    {errorMessage && <p>{errorMessage}</p>}
+                </form>
 
-                        <GoogleLogin
-                            onSuccess={handleGoogleSuccess}
-                            onError={handleGoogleFailure}
-                        />
-                    </>
-                ) : (
-                    <div className="role-selection">
-                        <h3>Select Your Role and Location</h3>
-                        <div className="role-options">
-                            <button onClick={() => setRole('user')}>User</button>
-                            <button onClick={() => setRole('admin')}>Admin</button>
-                        </div>
-                        <input
-                            type="text"
-                            placeholder="Enter your location"
-                            value={location}
-                            onChange={(e) => setLocation(e.target.value)}
-                            className="location-input"
-                            required
-                        />
-                        <button onClick={handleRoleSubmit}>Submit</button>
-                        {errorMessage && <p>{errorMessage}</p>}
-                    </div>
-                )}
+                <GoogleLogin
+                    onSuccess={handleGoogleSuccess}
+                    onError={handleGoogleFailure}
+                />
             </div>
         </div>
     );
